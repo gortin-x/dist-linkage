@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>distLinkage</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="../dist/distLinkage.min.js"></script>
+    <script src="./mock.data.js"></script>
+    <style>
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+
+
+    <script type="module">
+        Vue.use(distLinkage.default)
+
+        var vm = new Vue({
+            el: "#app",
+            render: function (h) {
+                return h(
+                    "distLinkage",
+                    {
+                        props: {
+                            data: mockData,
+                            label: "name",
+                            keyword: "code",
+                            value: [500],
+                        },
+                        on: {
+                            onSelect: function (select) {
+                                // 返回地区维度数据选择列表
+                                console.log("选择：", select)
+                            }
+                        }
+                    }
+                )
+            }
+        })
+
+
+
+    </script>
+</body>
+
+</html>
